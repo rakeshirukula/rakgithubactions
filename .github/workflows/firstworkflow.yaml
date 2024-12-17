@@ -1,0 +1,10 @@
+name : First workflow
+on : [push]
+
+jobs:
+  my-first-actions:
+    runs-on: ubuntu-latest
+    steps:
+     - name : run echo command
+       run: echo "first action rakesh"
+  

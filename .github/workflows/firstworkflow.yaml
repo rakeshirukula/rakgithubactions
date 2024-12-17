@@ -22,3 +22,7 @@ jobs:
       steps:
         - name : check python verison again
           run: python3 --version
+        - name : echo variables defined in ui
+          run : |
+           echo $COLLEGE
+           echo $FAMILY

@@ -26,7 +26,7 @@ jobs:
       env:
         COMPANY: ustglobal
         COLLEGE : ${{ vars.COLLEGE }}
-        FAMILY : ${{ vars.FAMILY }}
+        FAMILY: ${{ vars.FAMILY }}
       steps:
         - name : check python verison again
           run: python3 --version
@@ -37,6 +37,6 @@ jobs:
         - name : echo repo vars
           run : echo "$COLLEGE"
         - name : echo repo ENV vars
-          run :  echo "$FAMILY"
+          run :  echo "The value of FAMILY is $FAMILY"
 
           

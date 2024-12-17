@@ -25,8 +25,8 @@ jobs:
       runs-on: ubuntu-latest
       env:
         COMPANY: ustglobal
-        COLLEGE : ${{ vars.COLLEGE }}
-        FAMILY: ${{ vars.FAMILY }}
+        COLLEGE : ${{ vars.COLLEGE }} # Actions secrets and variables -> Repository variables/Environment variables
+        BROTHER: ${{ vars.FAMILY }}
       steps:
         - name : check python verison again
           run: python3 --version

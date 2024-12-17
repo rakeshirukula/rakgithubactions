@@ -26,6 +26,7 @@ jobs:
       env:
         COMPANY: ustglobal
         COLLEGE : ${{ vars.COLLEGE }}
+        FAMILY :  ${{ vars.FAMILY }}
       steps:
         - name : check python verison again
           run: python3 --version
@@ -35,5 +36,7 @@ jobs:
           run : echo "$GITHUB_REPOSITORY_OWNER"
         - name : echo repo vars
           run : echo "$COLLEGE"
+        - name : echo repo ENV vars
+          run : echo "$FAMILY"
 
           

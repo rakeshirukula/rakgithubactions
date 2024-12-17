@@ -30,5 +30,7 @@ jobs:
           run: python3 --version
         - name : overide env on job level
           run : echo "$COMPANY"
+        - name : echo repo varibles
+          run : echo "$COLLEGE"
 
           

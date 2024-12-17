@@ -26,7 +26,7 @@ jobs:
       env:
         COMPANY: ustglobal
         COLLEGE : ${{ vars.COLLEGE }}
-        FAMILY : ${{ env.FAMILY }}
+        FAMILY : ${{ vars.FAMILY }}
       steps:
         - name : check python verison again
           run: python3 --version

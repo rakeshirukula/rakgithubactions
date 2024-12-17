@@ -1,5 +1,7 @@
 name : First workflow
 on : [push]
+env:
+  COMPANY : accenture
 
 jobs:
   my-first-actions:
@@ -17,15 +19,16 @@ jobs:
          run: python3 --version
        - name : install maven
          run : sudo apt-get install maven -y
+       - name : echo workflow level env
+         run : echo $COMPANY
   my-parellel-job2:
       runs-on: ubuntu-latest
+      env:
+        COMPANY: ustglobal
       steps:
         - name : check python verison again
           run: python3 --version
-        - name : echo variables defined in ui
-          run : |
-           echo ${{ secrets.COLLEGE }}
-           echo "${{ secrets.FAMILY }}"
-        - name: Echo COLLEGE variable
-          run: echo "The value of COLLEGE is ${{ secrets.COLLEGE }}"
+        - name : overide env on job level
+          run : echo "$COMPANY"
+
           

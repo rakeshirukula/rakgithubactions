@@ -7,4 +7,17 @@ jobs:
     steps:
      - name : run echo command
        run: echo "first action rakesh"
-  
+     - name : run install command
+       run : sudo apt get update -y
+  my-parellel-job1:
+     runs-on: ubuntu-latest
+     steps:
+       - name : check python version
+         run: python3 --version
+       - name : install maven
+         run : sudo apt-get install maven -y
+  my-parellel-job2:
+      runs-on: ubuntu-latest
+      steps:
+        - name : check python verison again
+          run: python3 --version

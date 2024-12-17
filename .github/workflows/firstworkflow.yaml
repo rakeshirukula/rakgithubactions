@@ -25,4 +25,7 @@ jobs:
         - name : echo variables defined in ui
           run : |
            echo ${{ secrets.COLLEGE }}
-           echo ${{ secrets.FAMILY }}
+           echo "${{ secrets.FAMILY }}"
+        - name: Echo COLLEGE variable
+          run: echo "The value of COLLEGE is ${{ secrets.COLLEGE }}"
+          

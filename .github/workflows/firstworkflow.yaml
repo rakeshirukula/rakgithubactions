@@ -10,6 +10,7 @@ jobs:
      - name : run install command
        run : sudo apt-get update -y
   my-parellel-job1:
+     needs: my-first-actions
      runs-on: ubuntu-latest
      steps:
        - name : check python version

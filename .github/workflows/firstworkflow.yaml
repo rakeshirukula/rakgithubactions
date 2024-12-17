@@ -8,7 +8,7 @@ jobs:
      - name : run echo command
        run: echo "first action rakesh"
      - name : run install command
-       run : sudo apt get update -y
+       run : sudo apt-get update -y
   my-parellel-job1:
      runs-on: ubuntu-latest
      steps:

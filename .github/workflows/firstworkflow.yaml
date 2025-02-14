@@ -36,7 +36,3 @@ jobs:
           run : echo "$GITHUB_REPOSITORY_OWNER"
         - name : echo repo vars
           run : echo "$COLLEGE"
-        - name : echo repo ENV vars
-          run :  echo "The value of FAMILY is $FAMILY"
-
-          

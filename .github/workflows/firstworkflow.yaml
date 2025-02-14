@@ -1,38 +1,39 @@
-name : First workflow
-on : [push]
-env:
-  COMPANY : accenture
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  my-first-actions:
+  deploy:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        environment: [production, staging, development]
+
+    environment: ${{ matrix.environment }}
+
     steps:
-     - name : run echo command
-       run: echo "first action rakesh"
-     - name : run install command
-       run : sudo apt-get update -y
-  my-parellel-job1:
-     needs: my-first-actions
-     runs-on: ubuntu-latest
-     steps:
-       - name : check python version
-         run: python3 --version
-       - name : install maven
-         run : sudo apt-get install maven -y
-       - name : echo workflow level env
-         run : echo $COMPANY
-  my-parellel-job2:
-      runs-on: ubuntu-latest
-      env:
-        COMPANY: ustglobal
-        COLLEGE : ${{ vars.COLLEGE }} # Actions secrets and variables -> Repository variables/Environment variables
-        BROTHER: ${{ vars.FAMILY }}
-      steps:
-        - name : check python verison again
-          run: python3 --version
-        - name : overide env on job level
-          run : echo "$COMPANY"
-        - name : echo default varibles
-          run : echo "$GITHUB_REPOSITORY_OWNER"
-        - name : echo repo vars
-          run : echo "$COLLEGE"
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to ${{ matrix.environment }}
+        env:
+          API_KEY: ${{ secrets[format('{0}_API_KEY', matrix.environment | upper)] }}
+        run: |
+          echo "Deploying to ${{ matrix.environment }} environment"
+          # Add your deployment commands here
+          # Example: npm run deploy -- --env=${{ matrix.environment }}

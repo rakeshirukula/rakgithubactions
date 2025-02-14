@@ -29,11 +29,3 @@ jobs:
 
       - name: Build project
         run: npm run build
-
-      - name: Deploy to ${{ matrix.environment }}
-        env:
-          API_KEY: ${{ secrets[matrix.environment | toUpperCase() + '_API_KEY'] }}
-        run: |
-          echo "Deploying to ${{ matrix.environment }} environment"
-          # Add your deployment commands here
-          # Example: npm run deploy -- --env=${{ matrix.environment }}

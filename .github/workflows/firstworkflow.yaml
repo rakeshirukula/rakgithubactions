@@ -20,11 +20,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        environment: [production, staging, development]
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
 
-    environment: ${{ matrix.environment }}
+    environment: ${{ github.event.inputs.environment }}
 
     steps:
       - name: Checkout code
@@ -32,3 +30,6 @@ jobs:
         
       - name: Checkout code
         run: git --version
+
+
+

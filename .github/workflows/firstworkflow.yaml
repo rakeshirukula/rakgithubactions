@@ -32,7 +32,7 @@ jobs:
 
       - name: Deploy to ${{ matrix.environment }}
         env:
-          API_KEY: ${{ secrets[format('{0}_API_KEY', matrix.environment | upper)] }}
+          API_KEY: ${{ secrets[matrix.environment | toUpperCase() + '_API_KEY'] }}
         run: |
           echo "Deploying to ${{ matrix.environment }} environment"
           # Add your deployment commands here

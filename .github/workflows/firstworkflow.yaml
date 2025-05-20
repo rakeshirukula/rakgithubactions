@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+      - main
+      - prod
+      - uat
   workflow_dispatch:
     inputs:
       environment:
